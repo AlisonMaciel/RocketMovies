@@ -10,6 +10,7 @@ export default {
         BACKGROUND_BUTTON_DARK: "#0D0C0F",
         BACKGROUND_SECTION: "#3E3B47",
         TEXT_BODY: "#F4EDE8",
-        BACKGROUND_P: "999591"
+        BACKGROUND_P: "999591",
+        COLOR_TAG: "E5E5E5"
     }
 };
