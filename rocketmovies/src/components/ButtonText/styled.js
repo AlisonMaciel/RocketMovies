@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.button`
     display: flex;
     align-items: center;
     gap: 8px;
@@ -10,6 +10,7 @@ export const Container = styled.div`
     color: ${({theme}) => theme.COLORS.PINK};
     border: none;
     background-color: transparent;
+    cursor: pointer;
     
     > svg {
         font-size: 14px;

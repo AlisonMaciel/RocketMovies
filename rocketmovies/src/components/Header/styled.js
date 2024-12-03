@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { Link } from "react-router-dom";
+
 export const Container = styled.header`
     display: flex;
     align-items: center;
@@ -19,6 +21,7 @@ export const Container = styled.header`
         flex: 1;
         border-radius: 10px;
         min-width: 300px;
+        max-width: 1300px;
         border: none;
         padding: 19px 24px;
         background-color: ${({theme}) => theme.COLORS.BACKGROUND_GRAY_LIGHT_INPUT};
@@ -46,7 +49,7 @@ export const Profile = styled.div`
             font-size: 14px;
             line-height: 18px;
             color: ${({theme}) => theme.COLORS.TEXT_BODY};
-            text-align: end;
+            margin-top: 16px;
         }
 
          span {
@@ -65,4 +68,7 @@ export const Profile = styled.div`
         border-radius: 50%;
     }
     
+`
+export const Back = styled(Link)`
+    text-decoration: none;
 `

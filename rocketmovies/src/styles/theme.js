@@ -11,6 +11,9 @@ export default {
         BACKGROUND_SECTION: "#3E3B47",
         TEXT_BODY: "#F4EDE8",
         BACKGROUND_P: "999591",
-        COLOR_TAG: "E5E5E5"
+        COLOR_TAG: "E5E5E5",
+        COLOR_BUTTON: "1C1B1E",
+        COLOR_P_SIGNIN: "CAC4CF",
+        ORANGE: "#FF9000"
     }
 };

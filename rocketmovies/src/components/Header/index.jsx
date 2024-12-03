@@ -1,4 +1,4 @@
-import {Container, Profile} from "./styled"
+import {Container, Profile, Back} from "./styled"
 
 export function Header({...rest}) {
     return (
@@ -8,7 +8,7 @@ export function Header({...rest}) {
             <input 
             type="text"
             {...rest} />
-
+            <Back to="/profile">
             <Profile>
                 <div>
                     <strong>Alison Maciel</strong>
@@ -19,6 +19,7 @@ export function Header({...rest}) {
                 src="https://github.com/AlisonMaciel.png" 
                 alt="foto do usuário" />
             </Profile>
+            </Back>
         </Container>
     )
 }
