@@ -25,10 +25,10 @@ export function Profile() {
     const [email, setEmail] = useState(user.email)
     const [password, setPassword] = useState()
     const [password_old, setPassword_old] = useState()
-
  
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : placeholderImg
-    console.log(avatarUrl)
+
+    
     const [avatar, setAvatar] = useState(avatarUrl)
     const [avatarFile, setAvatarFile] = useState(null)
 
@@ -39,17 +39,18 @@ export function Profile() {
         const imagePreview = URL.createObjectURL(file)
         setAvatar(imagePreview)
     }
-    console.log(user)
 
     async function handleUpdate() {
-        const user = {
+        const updated = {
             name,
             email,
             password,
             password_old
         }
+
+        const userUpdated = Object.assign(user, updated)
          
-        updateProfile({user, avatarFile})
+        updateProfile({user: userUpdated, avatarFile})
     }
     return (
         <Container>

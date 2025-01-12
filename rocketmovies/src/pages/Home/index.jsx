@@ -27,7 +27,6 @@ export function Home() {
 
     useEffect(() => {
         async function fechtNotes() {
-            console.log(user.id)
             const response = await api.get(`/notes?user_id=${user.id}&title=${search}`)
             setNotes(response.data)
         }

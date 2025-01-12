@@ -46,7 +46,6 @@ function AuthProvider({children}) {
                 user: null,
                 token: null
             })
-            console.log(data)
         }
         
         function signUp({name, email, password}) {
@@ -79,13 +78,11 @@ function AuthProvider({children}) {
                     user.avatar = response.data.avatar
                 }
                 
-                    await api.put("/users", user)    
-                    localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
-                    
-                    setData({user, token: localStorage.getItem("@rocketmovies:token")})
-                    console.log(user)
-                    alert("Usuário atualizado com sucesso")
+                await api.put("/users", user)    
+                localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
                 
+                setData({user, token: localStorage.getItem("@rocketmovies:token")})
+                alert("Usuário atualizado com sucesso")              
 
             } catch (error) {
                 if(error.response) {
@@ -111,10 +108,6 @@ function AuthProvider({children}) {
             }
 
          }, [])
-
-         useEffect(() => {
-            console.log("Estado atualizado:", data); // Verifica o estado atualizado
-        }, [data]);
 
     return (
         <AuthContext.Provider value={{
