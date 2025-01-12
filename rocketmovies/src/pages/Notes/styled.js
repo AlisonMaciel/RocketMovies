@@ -16,6 +16,14 @@ export const Form = styled.form`
     width: 100%;
     max-width: 1113px;
 
+    > div.Bookmarks {  
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        background-color: ${({theme}) => theme.COLORS.BACKGROUND_BUTTON_DARK};
+        padding: 16px;
+        border-radius: 14px;
+    }
     > h1 {
         font-weight: 500;
         font-size: 36px;
@@ -32,11 +40,10 @@ export const Form = styled.form`
         margin: 24px 0 30px;
     }
 
-    > div {
+    > div.title {
         display: flex;
         align-items: center;
         gap: 40px;
-
 
         >div:nth-child(1) {
             width: 100%;
@@ -45,6 +52,19 @@ export const Form = styled.form`
         >div:nth-child(2) {
             width: 100%;
         }
+    }
+
+    > div.tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    >div.save-delete {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        margin-top: 14px;
     }
 `
 export const Back = styled(Link)`

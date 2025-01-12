@@ -60,15 +60,20 @@ export const Profile = styled.div`
             text-align: end;
         }
 
+        span:hover {
+            cursor: pointer;
+        }
+
     }
 
+    
+    `
+export const Back = styled(Link)`
+    text-decoration: none;
+    
     > img {
         width: 64px;
         height: 64px;
         border-radius: 50%;
     }
-    
-`
-export const Back = styled(Link)`
-    text-decoration: none;
 `

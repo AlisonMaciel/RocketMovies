@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
+
 import { Container, Content, StyledTags, Back } from "./styled";
 
 import {Header} from "../../components/Header"
@@ -5,11 +9,40 @@ import {ButtonPlus} from "../../components/ButtonPlus"
 import {Section} from "../../components/Section"
 
 import { FiPlus } from "react-icons/fi";
+import { useState } from "react";
+import { api } from "../../services/server";
+import { useAuth } from "../../hooks/auth";
 
 export function Home() {
+    const [search, setSearch] = useState("")
+    const [notes, setNotes] = useState([])
+
+    const {user} = useAuth()
+  
+    const navigate = useNavigate()
+
+    function handleDetails(id) {
+        navigate(`/details/${id}`)
+    }
+
+    useEffect(() => {
+        async function fechtNotes() {
+            console.log(user.id)
+            const response = await api.get(`/notes?user_id=${user.id}&title=${search}`)
+            setNotes(response.data)
+        }
+
+        if(user?.id) {
+            fechtNotes()
+        }
+    }, [user.id, search])
+    
     return (
         <Container>
-            <Header placeholder="Pesquisar pelo título"/>
+            <Header 
+            placeholder="Pesquisar pelo título"
+            onChange={e => setSearch(e.target.value)}
+            />
             
             <Content>
                 <div>
@@ -20,21 +53,25 @@ export function Home() {
                 </div>
 
                 <main>
-                    <Section title="Interestellar">
-                        <p>Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação secreta da NASA liderada pelo professor John Brand.</p>
+                    {
+                    notes ? notes.map(note => (
 
-                        <StyledTags title="react.js"/>
-                        <StyledTags title="express.js"/>
-                        <StyledTags title="node.js"/>
+                    <Section 
+                    title={note.title} 
+                    key={note.id}
+                    onClick={() => handleDetails(note.id)}
+                    >
+                    <>   
+                    <p>{note.description}</p>
+                    
+                    {note.tags && note.tags.map(tag => (
+                        <StyledTags key={tag.id} title={tag.name}/>
+                    ))}
+                        
+                    </> 
                     </Section>
 
-                    <Section title="Interestellar">
-                        <p>Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação secreta da NASA liderada pelo professor John Brand.</p>
-
-                        <StyledTags title="react.js"/>
-                        <StyledTags title="express.js"/>
-                        <StyledTags title="node.js"/>
-                    </Section>
+                    )) : <p>Voce nao tem notas para exibir</p>}
 
                 </main>
             </Content>

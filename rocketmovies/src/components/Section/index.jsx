@@ -2,9 +2,9 @@ import {Container} from "./styled"
 
 import Img from "../../assets/Group 7579.svg"
 
-export function Section({title, children}) {
+export function Section({title, children, ...rest}) {
     return (
-        <Container>
+        <Container {...rest}>
             <h2>{title}</h2>
             <img 
             src={Img}

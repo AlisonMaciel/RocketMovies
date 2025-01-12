@@ -6,6 +6,7 @@ export const Container = styled.div`
     background: rgba(255, 133, 155, 0.05);
     border-radius: 16px;
     margin-bottom: 24px;
+    cursor: pointer;
 
     > h2 {
         font-weight: 700;
