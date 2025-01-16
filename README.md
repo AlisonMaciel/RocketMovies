@@ -18,6 +18,7 @@
   <li>Express</li>
   <li>Além de muitas outras habilidades 🚀</li>
 </ul>
+<p><strong>Importante:</strong> O banco de dados pode demorar até <strong>10 segundos</strong> para responder na primeira requisição. Após isso, o desempenho será normal. Assim que aparecer a mensagem "Usuário criado com sucesso", você poderá aproveitar a aplicação ao máximo! 🚀</p>
 
 <h2>Confira o projeto 👇</h2>
 <ul>
