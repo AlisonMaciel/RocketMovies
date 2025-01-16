@@ -32,7 +32,7 @@ export function Details() {
     useEffect(() => {
         async function fechtUser() {
             const response = await api.get("/users")
-            setUser_id(response.data)
+            setUser_id(response.data.name)
         }
             fechtUser()
     }, [])
@@ -42,7 +42,6 @@ export function Details() {
             const response = await api.get(`/notes/${params.id}`)
             setData(response.data.note)
             setTags(response.data.tags)
-            console.log(response.data.tags)
         }
             fechtNotes()
     }, [])
@@ -58,7 +57,7 @@ export function Details() {
                 icon={FiArrowLeft}
                 />
                 </Back>
-                { data && (
+                { data ? (
                 <>
                 <div className="title">
                     <h1>{data.title}</h1>
@@ -68,7 +67,7 @@ export function Details() {
                 <div className="info">
                     <div>
                         <img src={imagemUrl}  />
-                        <span>{user_id.name}</span>
+                        <span>{user_id}</span>
                     </div>
 
                     <div>
@@ -84,7 +83,7 @@ export function Details() {
 
                 <p>{data.description}</p>
                 </>
-                )}
+                ) : (<p>Carregando...</p>)}
 
             </Content>
 

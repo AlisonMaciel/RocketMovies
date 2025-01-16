@@ -119,8 +119,8 @@ export function Notes() {
                         </div>
 
                     <div className="save-delete">
-                    <Addfilm onClick={saveFilm}/>
                     <RemoveFilm onClick={removeNote}/>
+                    <Addfilm onClick={saveFilm}/>
                     </div>
                         
                 </Form>
